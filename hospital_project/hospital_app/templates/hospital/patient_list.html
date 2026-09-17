@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% extends "hospital/base.html" %}
+{% block content %}
+<h1>Patients</h1>
+<a href="{% url 'patient_create' %}">+ Add Patient</a>
+<ul>
+    {% for patient in patients %}
+        <li>
+            {{ patient.name }} (Age: {{ patient.age }}) — Dr. {{ patient.doctor.name }}  ({{ patient.doctor.specialization }})
+            <a href="{% url 'patient_update' patient.id %}">Edit</a>
+            <a href="{% url 'patient_delete' patient.id %}">Delete</a>
+        </li>
+    {% empty %}
+        <li>No patients yet.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
+</body>
+</html>
