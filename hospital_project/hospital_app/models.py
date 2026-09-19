@@ -15,3 +15,6 @@ class Patient(models.Model):
 
     def __str__(self):
         return self.name
+
+class Pharmacy(models.Model):
+    name = models.CharField(max_length=)      
